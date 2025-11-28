@@ -33,6 +33,9 @@ artifacts/
 work/
 ci/
 
+# Plugin ZIP archives
+*.zip
+
 # Panel plugin (old code, not part of app plugin)
 panel-plugin/
 
