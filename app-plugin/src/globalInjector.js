@@ -97,7 +97,7 @@
     
     // Load React component
     if (window.System && window.System.import) {
-      window.System.import('/public/plugins/ravinderblockchian-hiveselector-app/module.js')
+      window.System.import('/public/plugins/ravinderblockchain-hiveselector-app/module.js')
         .then(function() {
           if (window.__HIVE_SELECTOR_INJECT_REACT__) {
             window.__HIVE_SELECTOR_INJECT_REACT__(container);

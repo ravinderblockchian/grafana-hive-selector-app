@@ -14,7 +14,7 @@ A Grafana App Plugin that adds a nested Hive selector dropdown to the dashboard 
 ### Using grafana-cli
 
 ```bash
-grafana-cli plugins install ravinderblockchian-hiveselector-app
+grafana-cli plugins install ravinderblockchain-hiveselector-app
 ```
 
 ### Manual Installation
@@ -22,7 +22,7 @@ grafana-cli plugins install ravinderblockchian-hiveselector-app
 1. Download the latest release from the [GitHub releases page](https://github.com/ravinderblockchian/grafana-hive-selector-app/releases)
 2. Extract the ZIP file to your Grafana plugins directory:
    ```bash
-   unzip ravinderblockchian-hiveselector-app-*.zip -d /var/lib/grafana/plugins/
+   unzip ravinderblockchain-hiveselector-app-*.zip -d /var/lib/grafana/plugins/
    ```
 3. Restart Grafana:
    ```bash
