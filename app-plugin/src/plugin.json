@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/main/docs/sources/developers/plugins/plugin.schema.json",
+  "type": "app",
+  "name": "Hive Selector App",
+  "id": "ravinderblockchain-hive-selector-app",
+  "info": {
+    "keywords": ["app", "hive", "selector"],
+    "description": "App plugin that adds Hive selector dropdown to dashboard control bar",
+    "author": {
+      "name": "Mindking"
+    },
+    "logos": {
+      "small": "img/logo.svg",
+      "large": "img/logo.svg"
+    },
+    "links": [],
+    "screenshots": [],
+    "version": "1.0.0",
+    "updated": "2025-11-21"
+  },
+  "dependencies": {
+    "grafanaDependency": ">=10.4.0",
+    "plugins": []
+  },
+  "preload": true
+}
+
