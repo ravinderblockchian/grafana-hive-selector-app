@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/grafana/grafana/main/docs/sources/developers/plugins/plugin.schema.json",
   "type": "app",
   "name": "Hive Selector App",
-  "id": "ravinderblockchain-hiveselector-app",
+  "id": "ravinderblockchian-hiveselector-app",
   "info": {
     "keywords": ["app", "hive", "selector"],
     "description": "App plugin that adds Hive selector dropdown to dashboard control bar",

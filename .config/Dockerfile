@@ -49,7 +49,7 @@ COPY supervisord/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN sed -i 's|</body>|<script src="http://localhost:35729/livereload.js"></script></body>|g' /usr/share/grafana/public/views/index.html
 
 # Inject hive selector script into grafana index.html (auto-loads on every page)
-RUN sed -i 's|</body>|<script src="/public/plugins/ravinderblockchain-hive-selector-app/globalInjector.js"></script></body>|g' /usr/share/grafana/public/views/index.html
+RUN sed -i 's|</body>|<script src="/public/plugins/ravinderblockchian-hiveselector-app/globalInjector.js"></script></body>|g' /usr/share/grafana/public/views/index.html
 
 
 COPY entrypoint.sh /entrypoint.sh
