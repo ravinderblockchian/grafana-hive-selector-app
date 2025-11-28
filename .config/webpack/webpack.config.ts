@@ -169,10 +169,10 @@ const config = async (env: Env): Promise<Configuration> => {
         patterns: [
           // If src/README.md exists use it; otherwise the root README
           // To `compiler.options.output`
-          { from: hasReadme() ? 'README.md' : '../README.md', to: '.', force: true, noErrorOnMissing: true },
+          { from: hasReadme() ? 'README.md' : '../../README.md', to: '.', force: true, noErrorOnMissing: true },
           { from: 'plugin.json', to: '.' },
-          { from: '../LICENSE', to: '.', noErrorOnMissing: true },
-          { from: '../CHANGELOG.md', to: '.', force: true, noErrorOnMissing: true },
+          { from: '../../LICENSE', to: '.', noErrorOnMissing: true },
+          { from: '../../CHANGELOG.md', to: '.', force: true, noErrorOnMissing: true },
           { from: '**/*.json', to: '.' },
           { from: '**/*.svg', to: '.', noErrorOnMissing: true },
           { from: '**/*.png', to: '.', noErrorOnMissing: true },
