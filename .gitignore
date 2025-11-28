@@ -33,6 +33,9 @@ artifacts/
 work/
 ci/
 
+# Panel plugin (old code, not part of app plugin)
+panel-plugin/
+
 # e2e test directories
 /test-results/
 /playwright-report/
