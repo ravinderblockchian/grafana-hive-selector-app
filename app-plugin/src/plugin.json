@@ -7,7 +7,7 @@
     "keywords": ["app", "hive", "selector"],
     "description": "App plugin that adds Hive selector dropdown to dashboard control bar",
     "author": {
-      "name": "Mindking"
+      "name": "ravinderblockchain"
     },
     "logos": {
       "small": "img/logo.svg",

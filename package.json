@@ -13,7 +13,7 @@
     "server": "docker compose up --build",
     "sign": "npx --yes @grafana/sign-plugin@latest --signature-type community --rootUrls \"https://grafana.com\""
   },
-  "author": "Mindking",
+  "author": "ravinderblockchain",
   "license": "Apache-2.0",
   "devDependencies": {
     "@grafana/data": "^12.3.0",
