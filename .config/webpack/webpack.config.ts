@@ -20,6 +20,7 @@ import { BuildModeWebpackPlugin } from './BuildModeWebpackPlugin.ts';
 import { DIST_DIR, SOURCE_DIR } from './constants.ts';
 import { getCPConfigVersion, getEntries, getPackageJson, getPluginJson, hasReadme, isWSL } from './utils.ts';
 import { externals } from '../bundler/externals.ts';
+import fs from 'fs';
 
 const pluginJson = getPluginJson();
 const cpVersion = getCPConfigVersion();
@@ -69,7 +70,7 @@ const config = async (env: Env): Promise<Configuration> => {
       rules: [
         // This must come first in the rules array otherwise it breaks sourcemaps.
         {
-          test: /src\/(?:.*\/)?module\.tsx?$/,
+          test: /module\.tsx?$/,
           use: [
             {
               loader: 'imports-loader',
@@ -178,10 +179,16 @@ const config = async (env: Env): Promise<Configuration> => {
           { from: '**/*.png', to: '.', noErrorOnMissing: true },
           { from: '**/*.html', to: '.', noErrorOnMissing: true },
           { from: 'img/**/*', to: '.', noErrorOnMissing: true },
+          // Copy img folder from panel-plugin (it's outside src)
+          { 
+            from: path.resolve(process.cwd(), 'panel-plugin/img'), 
+            to: 'img',
+            noErrorOnMissing: true,
+            globOptions: { ignore: ['**/node_modules/**'] },
+          },
           { from: 'libs/**/*', to: '.', noErrorOnMissing: true },
           { from: 'static/**/*', to: '.', noErrorOnMissing: true },
           { from: '**/query_help.md', to: '.', noErrorOnMissing: true },
-          { from: 'globalInjector.js', to: '.', noErrorOnMissing: true },
         ],
       }),
       // Replace certain template-variables in the README and plugin.json
@@ -231,9 +238,9 @@ const config = async (env: Env): Promise<Configuration> => {
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
       // handle resolving "rootDir" paths
       modules: [
-        path.resolve(process.cwd(), 'app-plugin/src'),
+        path.resolve(process.cwd(), 'panel-plugin/src'),
         path.resolve(process.cwd(), 'shared'),
-        path.resolve(process.cwd(), 'src'),
+        path.resolve(process.cwd(), 'node_modules'),
         'node_modules'
       ],
       unsafeCache: true,

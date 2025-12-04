@@ -30,7 +30,7 @@ export const NestedHiveSelector: React.FC<NestedHiveSelectorProps> = ({
   // Use controlled or uncontrolled state
   const [internalSelectedValue, setInternalSelectedValue] = useState<string | null>(null);
   const [internalSelectedPath, setInternalSelectedPath] = useState<string[]>([]);
-  const [dropdownOpen, setDropdownOpen] = useState(true);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [expanded, setExpanded] = useState({});
   const [searchQuery, setSearchQuery] = useState('');
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -62,8 +62,10 @@ export const NestedHiveSelector: React.FC<NestedHiveSelectorProps> = ({
     return findSelectedNode(treeData, selectedPath);
   }, [selectedPath, treeData]);
 
-  // Close dropdown if clicked outside
+  // Close dropdown if clicked outside (only when dropdown is open)
   useEffect(() => {
+    if (!dropdownOpen) return;
+    
     function handleClickOutside(e) {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setDropdownOpen(false);
@@ -71,7 +73,7 @@ export const NestedHiveSelector: React.FC<NestedHiveSelectorProps> = ({
     }
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [dropdownOpen]);
 
   // Auto-expand parents when dropdown opens (only if something is selected)
   useEffect(() => {
@@ -381,6 +383,11 @@ export const NestedHiveSelector: React.FC<NestedHiveSelectorProps> = ({
           paddingRight: selectedPath.length > 0 ? '32px' : '12px',
           width: '100%',
           boxSizing: 'border-box',
+          cursor: 'pointer',
+        }}
+        onClick={(e) => {
+          e.stopPropagation();
+          setDropdownOpen(!dropdownOpen);
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.borderColor = theme.colors.border.strong;

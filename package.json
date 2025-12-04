@@ -1,5 +1,5 @@
 {
-  "name": "nested-hive-selector",
+  "name": "mindking-custom-dropdown",
   "version": "1.0.2",
   "scripts": {
     "build": "webpack -c ./.config/webpack/webpack.config.ts --env production",
@@ -72,9 +72,12 @@
     "@emotion/css": "11.10.6",
     "@grafana/i18n": "^12.2.1",
     "@grafana/schema": "^12.2.1",
+    "@types/leaflet": "^1.9.21",
+    "leaflet": "^1.9.4",
     "rc-tree": "^5.8.8",
     "react": "^18.3.0",
-    "react-dom": "^18.3.0"
+    "react-dom": "^18.3.0",
+    "react-leaflet": "^4.2.1"
   },
   "packageManager": "npm@10.9.0"
 }

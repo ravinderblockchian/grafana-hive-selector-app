@@ -43,14 +43,17 @@ export function hasReadme() {
   return fs.existsSync(path.resolve(process.cwd(), SOURCE_DIR, 'README.md'));
 }
 
-// Support bundling nested plugins by finding all plugin.json files in src directory
-// then checking for a sibling module.[jt]sx? file.
+// Support bundling panel plugin by finding plugin.json file and module.[jt]sx? file.
 export async function getEntries() {
-  // Only look in app-plugin/src (not panel-plugin or old src folder)
-  const pluginsJson = await glob(`${SOURCE_DIR}/plugin.json`, { absolute: true });
+  // Look for panel-plugin/src/plugin.json
+  const panelPluginJson = await glob(`panel-plugin/src/plugin.json`, { absolute: true });
+  
+  if (panelPluginJson.length === 0) {
+    throw new Error('Panel plugin not found at panel-plugin/src/plugin.json');
+  }
 
   const plugins = await Promise.all(
-    pluginsJson.map((pluginJson) => {
+    panelPluginJson.map((pluginJson) => {
       const folder = path.dirname(pluginJson);
       return glob(`${folder}/module.{ts,tsx,js,jsx}`, { absolute: true });
     })
@@ -58,7 +61,7 @@ export async function getEntries() {
 
   return plugins.reduce<Record<string, string>>((result, modules) => {
     return modules.reduce((innerResult, module) => {
-      // Always use 'module' as entry name for app-plugin (root level)
+      // Use 'module' as entry name for panel plugin
       innerResult['module'] = module;
       return innerResult;
     }, result);
