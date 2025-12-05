@@ -179,9 +179,9 @@ const config = async (env: Env): Promise<Configuration> => {
           { from: '**/*.png', to: '.', noErrorOnMissing: true },
           { from: '**/*.html', to: '.', noErrorOnMissing: true },
           { from: 'img/**/*', to: '.', noErrorOnMissing: true },
-          // Copy img folder from panel-plugin (it's outside src)
+          // Copy img folder from app-plugin (it's outside src)
           { 
-            from: path.resolve(process.cwd(), 'panel-plugin/img'), 
+            from: path.resolve(process.cwd(), 'app-plugin/img'), 
             to: 'img',
             noErrorOnMissing: true,
             globOptions: { ignore: ['**/node_modules/**'] },
@@ -238,7 +238,7 @@ const config = async (env: Env): Promise<Configuration> => {
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
       // handle resolving "rootDir" paths
       modules: [
-        path.resolve(process.cwd(), 'panel-plugin/src'),
+        path.resolve(process.cwd(), 'app-plugin/src'),
         path.resolve(process.cwd(), 'shared'),
         path.resolve(process.cwd(), 'node_modules'),
         'node_modules'

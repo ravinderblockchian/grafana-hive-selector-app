@@ -45,8 +45,8 @@ COPY supervisord/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 
 
-# Inject livereload script into grafana index.html
-RUN sed -i 's|</body>|<script src="http://localhost:35729/livereload.js"></script></body>|g' /usr/share/grafana/public/views/index.html
+# Inject livereload script into grafana index.html (disabled - causes connection errors)
+# RUN sed -i 's|</body>|<script src="http://localhost:35729/livereload.js"></script></body>|g' /usr/share/grafana/public/views/index.html
 
 # App plugin will be loaded via Grafana's plugin system
 

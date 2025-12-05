@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/main/docs/sources/developers/plugins/plugin.schema.json",
+  "type": "app",
+  "name": "Site Manager Dashboard",
+  "id": "mindking-site-manager-dashboard",
+  "preload": true,
+  "info": {
+    "keywords": ["app", "dashboard", "site", "manager", "hive", "map", "alarms"],
+    "description": "Complete site management dashboard with custom branding, alarm summaries, interactive map, navigation tree, and dynamic panel loading. Full control over layout and UI.",
+    "author": {
+      "name": "Mindking"
+    },
+    "logos": {
+      "small": "img/logo.svg",
+      "large": "img/logo.svg"
+    },
+    "links": [],
+    "screenshots": [],
+    "version": "1.0.0",
+    "updated": "2025-12-01"
+  },
+  "dependencies": {
+    "grafanaDependency": ">=10.4.0",
+    "plugins": []
+  }
+}
+

@@ -319,6 +319,35 @@ export const NestedHiveSelector: React.FC<NestedHiveSelectorProps> = ({
               <span style={{ width: 24, marginRight: 0, display: "inline-block" }}></span>
             )}
 
+            {/* Folder/File/Location icon */}
+            {isParent ? (
+              // Folder icon for parent nodes
+              <img
+                src={folderIcon}
+                alt="folder"
+                style={{
+                  width: '16px',
+                  height: '16px',
+                  marginRight: '8px',
+                  flexShrink: 0,
+                  filter: `brightness(0) saturate(100%) invert(${theme.isDark ? '1' : '0'})`,
+                }}
+              />
+            ) : (
+              // Location icon for sites (leaf nodes)
+              <img
+                src={locationIcon}
+                alt="location"
+                style={{
+                  width: '16px',
+                  height: '16px',
+                  marginRight: '8px',
+                  flexShrink: 0,
+                  filter: `brightness(0) saturate(100%) invert(${theme.isDark ? '1' : '0'})`,
+                }}
+              />
+            )}
+
             {/* Severity Icon */}
             {(() => {
               const nodeWithIcon = node as any;

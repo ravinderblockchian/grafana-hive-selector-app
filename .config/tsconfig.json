@@ -9,7 +9,7 @@
     "alwaysStrict": true,
     "declaration": false,
     "rootDir": "..",
-    "baseUrl": "../panel-plugin/src",
+    "baseUrl": "../app-plugin/src",
     "typeRoots": ["../node_modules/@types"],
     "resolveJsonModule": true
   },
@@ -21,6 +21,6 @@
     },
     "transpileOnly": true
   },
-  "include": ["../panel-plugin/src", "../shared", "./types"],
+  "include": ["../app-plugin/src", "../shared", "./types"],
   "extends": "@grafana/tsconfig"
 }

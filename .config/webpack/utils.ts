@@ -43,17 +43,17 @@ export function hasReadme() {
   return fs.existsSync(path.resolve(process.cwd(), SOURCE_DIR, 'README.md'));
 }
 
-// Support bundling panel plugin by finding plugin.json file and module.[jt]sx? file.
+// Support bundling app plugin by finding plugin.json file and module.[jt]sx? file.
 export async function getEntries() {
-  // Look for panel-plugin/src/plugin.json
-  const panelPluginJson = await glob(`panel-plugin/src/plugin.json`, { absolute: true });
+  // Look for app-plugin/src/plugin.json
+  const appPluginJson = await glob(`app-plugin/src/plugin.json`, { absolute: true });
   
-  if (panelPluginJson.length === 0) {
-    throw new Error('Panel plugin not found at panel-plugin/src/plugin.json');
+  if (appPluginJson.length === 0) {
+    throw new Error('App plugin not found at app-plugin/src/plugin.json');
   }
 
   const plugins = await Promise.all(
-    panelPluginJson.map((pluginJson) => {
+    appPluginJson.map((pluginJson) => {
       const folder = path.dirname(pluginJson);
       return glob(`${folder}/module.{ts,tsx,js,jsx}`, { absolute: true });
     })
@@ -61,7 +61,7 @@ export async function getEntries() {
 
   return plugins.reduce<Record<string, string>>((result, modules) => {
     return modules.reduce((innerResult, module) => {
-      // Use 'module' as entry name for panel plugin
+      // Use 'module' as entry name for app plugin
       innerResult['module'] = module;
       return innerResult;
     }, result);
